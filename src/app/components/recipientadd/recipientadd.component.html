@@ -1,0 +1,56 @@
+<div class="row mx-5">
+  <h1>Nuevo destinatario</h1>
+</div>
+
+<div *ngIf="!banks || !typeAccounts">
+  <div class="loader" style="margin:auto;margin-top: 15%;"></div>
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div class="row mx-5" *ngIf="banks && typeAccounts">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert" *ngIf="msg">
+        {{msg}}
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="msgSucceful">
+        {{msgSucceful}}
+      </div>
+    </div>
+    <div class="form-group col-12 col-sm-6 my-2">
+      <label for="rut">Rut</label>
+      <input type="text" class="form-control" id="rut" formControlName="rut">
+    </div>
+    <div class="form-group col-12 col-sm-6 my-2">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" id="nombre" formControlName="nombre">
+    </div>
+    <div class="form-group col-12 col-sm-6 my-2">
+      <label for="correo">Correo</label>
+      <input type="email" class="form-control" id="correo" formControlName="correo">
+    </div>
+    <div class="form-group col-12 col-sm-6 my-2">
+      <label for="telefono">Telefono</label>
+      <input type="number" class="form-control" id="telefono" formControlName="telefono">
+    </div>
+
+    <div class="form-group col-12 col-sm-6 my-2">
+      <label for="banco">Banco</label>
+      <select class="form-select" id="banco" formControlName="banco_id">
+        <option *ngFor="let bank of banks" [ngValue]="bank.id">{{bank.name}}</option>
+        </select>
+      </div>
+      <div class="form-group col-12 col-sm-6 my-2">
+        <label for="numero_cuenta">Tipo de cuenta</label>
+        <select class="form-select" id="tipo_cuentaid" formControlName="tipo_cuentaid">
+          <option *ngFor="let typeAccount of typeAccounts" [ngValue]="typeAccount.id">{{typeAccount.valor}}</option>
+        </select>
+      </div>
+      <div class="form-group col-12 col-sm-6 my-2">
+        <label for="numero_cuenta">Nº de Cuenta</label>
+        <input type="number" class="form-control" id="numero_cuenta" formControlName="numero_cuenta">
+      </div>
+      <div class="form-group col-12 mt-5 input-position text-center">
+        <button type="submit" class="btn btn-primary submitbutton">Crear</button>
+      </div>
+    </div>
+</form>

@@ -1,0 +1,22 @@
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-secondary border-bottom mb-5">
+      <div class="container">
+        <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/']"
+          class="nav-link text-dark ">
+          <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4">Mi banco - Nueva Transferencia</span>
+        </a>
+
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+              [routerLink]="['/']" class="nav-link text-dark">Nuevo Destinatario</a></li>
+          <li class="nav-item"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+              [routerLink]="['/transferir']" class="nav-link text-dark">Transferir</a></li>
+          <li class="nav-item"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+              [routerLink]="['/historial']" class="nav-link text-dark">Historial</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>

@@ -1,0 +1,61 @@
+<div class="row mx-5">
+  <h1>Transferir</h1>
+</div>
+
+
+
+<div class="row mx-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert" *ngIf="msgError">
+        {{msgError}}
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="msgSuccess">
+        {{msgSuccess}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group col-12 col-lg-6 my-2">
+    <div class="row">
+      <div class="col-12 my-2">
+        <label for="buscador">Buscar Destinatario</label>
+        <input type="email" class="form-control" id="buscador" name="buscador" [(ngModel)]="findWord" (keyup)="buscar()"
+          placeholder="Ingrese nombre para buscar ...">
+      </div>
+      <div class="col-12 my-2">
+        <h3>Seleccionar destinatario</h3>
+        <p>Nombre: {{transferAdd.nombre}}</p>
+        <p>Correo: {{transferAdd.correo}}</p>
+        <p>Banco: {{transferAdd.banco}}</p>
+        <p>Tipo de cuenta: {{transferAdd.tipo_cuenta}}</p>
+      </div>
+      <div class="col-12 my-2">
+        <label for="monto">Monto</label>
+        <input type="number" class="form-control" id="monto" [(ngModel)]="monto">
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-lg-6 my-2">
+    <table class="table table-hover table-light" *ngIf="estaVacioElBuscador">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Rut</th>
+          <th scope="col">Tipo de cuenta</th>
+          <th scope="col">Banco</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resultadoBusqueda of Resultados" (click)="seleccionarTransferencia(resultadoBusqueda.id)">
+          <td>{{resultadoBusqueda.nombre}}</td>
+          <td>{{resultadoBusqueda.rut}}</td>
+          <td>{{resultadoBusqueda.tipo_cuenta}}</td>
+          <td>{{resultadoBusqueda.banco}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="form-group col-12 mt-5 input-position text-center">
+    <button type="submit" class="btn btn-primary submitbutton" (click)="onSubmit()">Transferir</button>
+  </div>
+</div>
